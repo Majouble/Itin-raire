@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Accessibilité crue Seine</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css" />
+
+<script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+  <section id="config-panel">
+    <button id="toggle-config" type="button">⚙️ Configuration</button>
+
+    <div id="config-body" hidden>
+      <div class="field">
+        <label for="ors-key">Clé API OpenRouteService</label>
+        <input id="ors-key" type="password" placeholder="Collez votre clé API ORS" />
+        <small>Créée gratuitement sur <a href="https://openrouteservice.org/dev/#/signup" target="_blank" rel="noopener">openrouteservice.org</a></small>
+      </div>
+
+      <div class="field">
+        <label for="work-address">Adresse du lieu de travail</label>
+        <input id="work-address" type="text" placeholder="ex: 10 Rue de Rivoli, 75004 Paris" />
+        <button id="geocode-work" type="button">Géocoder</button>
+        <span id="work-coords" class="coords-display"></span>
+      </div>
+
+      <div class="field">
+        <label for="flood-file">Zone de crue (fichier GeoJSON)</label>
+        <input id="flood-file" type="file" accept=".geojson,.json" />
+        <span id="flood-status" class="coords-display"></span>
+      </div>
+
+      <div class="field">
+        <label for="profile">Mode de déplacement</label>
+        <select id="profile">
+          <option value="driving-car">Voiture</option>
+          <option value="cycling-regular">Vélo</option>
+          <option value="foot-walking">À pied</option>
+        </select>
+      </div>
+
+      <button id="save-config" type="button" class="primary">Enregistrer la configuration</button>
+    </div>
+  </section>
+
+  <section id="run-panel">
+    <button id="run-calc" type="button" class="primary" disabled>Calculer l'accessibilité de tous les collègues</button>
+    <span id="run-status"></span>
+    <div id="progress-bar-wrap" hidden>
+      <div id="progress-bar"></div>
+    </div>
+  </section>
+
+  <div id="map"></div>
+
+  <section id="results-panel">
+    <table id="results-table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Adresse</th>
+          <th>Statut</th>
+          <th>Distance</th>
+          <th>Durée</th>
+        </tr>
+      </thead>
+      <tbody id="results-body"></tbody>
+    </table>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

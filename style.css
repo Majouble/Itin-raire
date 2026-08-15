@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#config-panel {
+  border-bottom: 1px solid #ddd;
+  background: #fafafa;
+  flex: 0 0 auto;
+}
+
+#toggle-config {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  background: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#config-body {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field input[type="text"],
+.field input[type="password"],
+.field select {
+  padding: 5px 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.field small {
+  color: #666;
+}
+
+.field small a {
+  color: #2563eb;
+}
+
+.coords-display {
+  font-size: 12px;
+  color: #16a34a;
+}
+
+button {
+  cursor: pointer;
+}
+
+button.primary {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+button.primary:disabled {
+  background: #93b4e8;
+  cursor: not-allowed;
+}
+
+#run-panel {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#progress-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #2563eb;
+  transition: width 0.2s;
+}
+
+#map {
+  flex: 1 1 auto;
+  min-height: 250px;
+}
+
+#results-panel {
+  flex: 0 0 auto;
+  max-height: 200px;
+  overflow-y: auto;
+  border-top: 1px solid #ddd;
+}
+
+#results-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#results-table th,
+#results-table td {
+  text-align: left;
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+
+#results-table th {
+  position: sticky;
+  top: 0;
+  background: #fafafa;
+}
+
+.status-ok {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.status-blocked {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #999;
+}
+
+.status-error {
+  color: #d97706;
+  font-weight: 600;
+}
